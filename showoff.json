@@ -1,5 +1,9 @@
 [ 
     {"section":"title"} ,
     {"section":"about_me"},
-    {"section":"socket"}
+    {"section":"socket"},
+    {"section":"event"},
+    {"section":"actor"},
+    {"section":"protocols"},
+    {"section":"thanks"}
 ]

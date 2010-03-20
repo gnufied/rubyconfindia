@@ -1,12 +1,14 @@
-!SLIDE bullets incremental left
+!SLIDE smbullets incremental
 ## whoami ##
 
 * Hemant Kumar
-* Author of Packet and BackgrounDRb ruby libraries. 
+* Author of Packet and BackgrounDRb ruby libraries.
+* Contributor to Eventmachine, Rubinius, Butler.
+* Programming and Books.
 
 !SLIDE center
 
-![CRRI](octocat.png)
+![CRRI](logo.gif)
 
 !SLIDE center
 
