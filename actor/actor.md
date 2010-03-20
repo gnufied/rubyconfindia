@@ -24,10 +24,10 @@ Rich Hickey on why Clojure doesn't implement Erlang-style Actor based model.
     @@@ ruby
     actor(:bar) do
       react do |message,sender|
-        deliver(:foo,"Hello Foo howdy?)
+        deliver(:foo,"Hello Foo howdy?".freeze)
         if(sender && sender.name == :foo)
           puts "Foo is saying: #{message}"
-          deliver(:foo,"Goodbye Foo time to sleep)
+          deliver(:foo,"Goodbye Foo time to sleep".freeze)
           break
         end
       end
@@ -38,7 +38,7 @@ Rich Hickey on why Clojure doesn't implement Erlang-style Actor based model.
         case message
         when String
           puts "Received a string : #{message} from actor #{sender.name}"
-          deliver(sender,"Hey Bar, howdy?)
+          deliver(sender,"Hey Bar, howdy?".freeze)
           break
         when Array
           puts "Received an Array: #{message} from actor #{sender.name}"
@@ -55,6 +55,7 @@ Rich Hickey on why Clojure doesn't implement Erlang-style Actor based model.
 * Each Actor is running on its own thread.
 * `actor(:foo)` returns an instance of Actor class, you can store it!
 * The switch case, really looked ugly?
+* What were those `freeze` calls?
 
 !SLIDE smbullets incremental
 

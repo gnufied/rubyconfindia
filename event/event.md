@@ -183,7 +183,6 @@
       end
     end
 
-Inversion of Control
 
 continued...
 	
@@ -196,6 +195,19 @@ continued...
 * Must have tests for parser (since they can be hard to get right)
 * Mock or Stub the IO parts.
 * Avoid too many instance variables for implicit state. Pass values to methods if you can.
+
+!SLIDE smaller
+
+## Bad Evented code ##
+
+    @@@ ruby
+    def receive_data(raw_data)
+      @tokenizer.extract(raw_data).each |complete_message|
+        @order_object = OrderParser.parse(complete_message)
+     	place_order()
+      end
+    end
+    
 
 !SLIDE smbullets incremental
 

@@ -95,7 +95,6 @@
         TRAP_END;
         rb_str_unlocktmp(str);
 	
-### And it doesn't work on windows ###
     
 
 !SLIDE left bullets incremental
@@ -104,7 +103,7 @@
 
 * A blocking call is actually blocking call. The thread which makes the blocking call releases the GVL.
 * Did I say GVL?
-* Works more reliably on Windows.
+
 
 !SLIDE
 
@@ -115,13 +114,9 @@
     #define BLOCKING_REGION(func, arg) 
        (long)rb_thread_blocking_region((func),(arg), RUBY_UBF_IO, 0)
        
-    while (rb_io_check_closed(fptr),
-	   rb_thread_wait_fd(arg.fd),
-	   (slen = BLOCKING_REGION(recvfrom_blocking, &arg)) < 0) {
-	   if (RBASIC(str)->klass || RSTRING_LEN(str) != buflen) {
-	      rb_raise(rb_eRuntimeError, "buffer string modified");
-	   }
-    }
+    // Blocking call for IO   
+    BLOCKING_REGION(recvfrom_blocking, &arg)) < 0)
+
     // thread.c
     //
     VALUE rb_thread_blocking_region(rb_blocking_function_t *func, \
@@ -134,9 +129,11 @@
 * MRI 1.8 has green threads.
 * MRI 1.9 has native threads, but has GVL.
 * JRuby has native threads.
+* Rubinius has native threads with GVL.
+* Rubinius has MVM (but was broken yesteday, when I tried to use it. :( )
 * All is not lost.
 
-!SLIDE bullets
+!SLIDE bullets incremental
 
 ## You can use process level parallelism ##
 

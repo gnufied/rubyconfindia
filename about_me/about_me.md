@@ -3,7 +3,7 @@
 
 * Hemant Kumar
 * Author of Packet and BackgrounDRb ruby libraries.
-* Contributor to Eventmachine, Rubinius, Butler.
+* Contributor to Eventmachine, Rubinius/RubySpec, Butler.
 * Programming and Books.
 
 !SLIDE center
